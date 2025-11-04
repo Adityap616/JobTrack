@@ -1,0 +1,28 @@
+# Node modules (both frontend + backend)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+client/dist/
+server/build/
+
+# Environment variables
+.env
+server/.env
+client/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Optional: If using Vite
+*.local
