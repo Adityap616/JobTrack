@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const fetchJobs = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/jobs", {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/jobs`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setJobs(data.jobs || []);
@@ -35,13 +35,13 @@ const Dashboard = () => {
     try {
       if (editingJob) {
         await axios.patch(
-          `http://localhost:5000/api/jobs/${editingJob._id}`,
+          `${import.meta.env.VITE_API_BASE_URL}/jobs/${editingJob._id}`,
           newJob,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setEditingJob(null);
       } else {
-        await axios.post("http://localhost:5000/api/jobs", newJob, {
+        await axios.post(`${import.meta.env.VITE_API_BASE_URL}/jobs`, newJob, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
@@ -63,7 +63,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this job?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/jobs/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchJobs();
